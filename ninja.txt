@@ -206,6 +206,7 @@ DOCUMENT OBJECT MODEL
    console.log(article.children);
    console.log(Array.from(article.children)); // It doesn't alter the original value of this const article.
 
+=>  events bubbling in action. First of all the callback function attached to the event listener to the li fires. Then the callback function associated with the event listener on the ul fires because the event bubbles up and fires in the il first then ul.
 
 
 
