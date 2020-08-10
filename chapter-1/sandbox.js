@@ -17,6 +17,7 @@ items.forEach(item => {
   // console.log(item);
   item.addEventListener('click', (e) => {
     console.log('event in LI');
+    e.stopPropagation(); 
     e.target.remove();
   });
 });

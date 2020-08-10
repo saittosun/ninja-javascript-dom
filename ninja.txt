@@ -208,6 +208,8 @@ DOCUMENT OBJECT MODEL
 
 =>  events bubbling in action. First of all the callback function attached to the event listener to the li fires. Then the callback function associated with the event listener on the ul fires because the event bubbles up and fires in the il first then ul.
 
+=> we only see events in li because when the callback function fires for this we reach this stop propagation method and it stops the event bubbling up anymore to the parent.
+
 
 
 
