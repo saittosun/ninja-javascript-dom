@@ -1,0 +1,260 @@
+=> order of operation:  Brackets, indices, division, multiplication, addition and substraction
+
+=> a loop is a type of control flowing js.
+
+=> cycling through an array or some data as iteration. Each iteration is one cycle through. every time we perform code block that is one iteration through the data.
+
+=> for (let i=0; i<5; i++) {
+    console.log('in loop: ', i)
+}
+curly braces sonrasinda ; yok!!
+
+=> for...of loops ES6 introduces a new for-of loop which allows us to iterate over arrays or other iterable objects (e.g. strings) very easily. Also, the code inside the loop is executed for each element of the iterable object.
+
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+    		<meta charset="utf-8">
+    		<title>JavaScript ES6 for...of Loop</title>
+	</head>
+	<body>
+    		<script>
+    			// Iterating over array
+    			let letters = ["a", "b", "c", "d", "e", "f"];
+    
+    			for(let letter of letters) {
+        		document.write(letter + "<br>"); // a,b,c,d,e,f
+    			}
+    			document.write("<hr>");
+    
+    			// Iterating over string
+    			let greet = "Hello World!";
+    
+    			for(let character of greet) {
+        			document.write(character + "<br>"); // H,e,l,l,o, ,W,o,r,l,d,!
+    			}
+    		</script>
+	</body>
+	</html>
+
+=> for...in Loops
+	The for-in loop is a special type of a loop that iterates over the properties of an object, or the elements of an array. 
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+   		<meta charset="utf-8">
+    		<title>JavaScript Iterate Over an Array Using For Loop</title>
+	</head>
+	<body>
+    	<script>
+    		// An object with some properties 
+    		var person = {"name": "Clark", "surname": "Kent", "age": "36"};
+     
+    		// Loop through all the properties in the object  
+    		for(var prop in person) {  
+        		document.write("<p>" + prop + " = " + person[prop] + "</p>"); //name = Clark surname = Kent age = 36
+    		}
+    	</script>
+	</body>
+	</html>
+
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+    		<meta charset="utf-8">
+    		<title>JavaScript Loop Through an Array Using For-In Loop</title>
+	</head>
+	<body>
+    	<script>
+    		// An array with some elements
+    		var fruits = ["Apple", "Banana", "Mango", "Orange", "Papatya"];
+     
+    		// Loop through all the elements in the array 
+    		for(var i in fruits) {  
+        		document.write("<p>" + fruits[i] + "</p>"); //Apple Banana Mango Orange Papatya
+    		}
+    	</script>
+	</body>
+	</html>
+
+=> while loops....
+   const names = ['sait', 'tosun']
+   let i=0;
+   while(i<5) {
+    console.log(names[i];
+    i++;
+   }
+
+=> do while loops....
+   let i = 3;
+   do {
+     console.log('val of is: ', i); // 3 4
+     i++;
+   } while(i<5)
+
+=> break and continue
+   const scores = [50,25,0,30,100,20,50]
+   for (let i=0; i<scores.length; i++) {
+    if(scores[i] === 0){
+     continue; // burada codu okuma artik devam etmiyor bir sonraki iteration a geciyor.
+    }
+   
+   console.log('your score: ', scores[i])
+   if(scores[i] === 100){
+      console.log('congrats, ');
+      break;// burada donguyu kesiyor
+    }
+   }
+
+=> variables & block scope
+	let age = 30;
+
+	let age = 50; // dersem age has already been declared diyor yani hata veriyor because they are in the same scope
+	if (true) {
+		let name = sait
+		age = 40;// burada age yerine let age diyerek we are allowed to redefine the variable inside a code block even though it is got the same name. yani age inside refers age = 40 disarida let age = 30 u refer ediyor anti parantez let age = 50 command!! 
+		console.log('inside 1st code block: ', age, name); //40 sait
+	}
+	console.log('outside code block: ', age, name); //40 in both cases 40 because we change it here first before we output it anywhere. ancak bu calismanin birinci asamasi if blogunda sadece age = 40 satiri var. burada name i okumaz. cunku biz yukarida we are giving a local scope meaning the scope of this variable is only valid inside this code block because we define it inside if block
+
+------------------variable
+	let age = 30;
+
+	if (true) {
+		let name = "sait"
+		let age = 40;
+		console.log('inside 1st code block: ', age, name); //40 sait
+			if (true) {
+				console.log('inside 2nd code block: ', name); //40
+			}
+	}
+	console.log('outside code block: ', age, name); //30
+	******** burada let yerine const kullansak da bir sey degismiyor ancak degeri artik degistiremiyoruz scope icinde
+
+=> we don't do a semicolon at the end of the function declaration. Now most of the time these two different ways of creating functions they behave the same way. But there is a subtle difference when it comes to something called hoisting in JavaScript. Now hoisting is a term that loosely describes how our functions are effectively hoisted to the top of a file before the rest of our javascript actually runs. uzun lafin kisasi expression da hosting yok declaration da var ama expression kullanma tavsiye ediliyor.
+
+=> Methods are functions but their functions which are associated with an object or data type if you like, like a string.
+
+=> We can pass in a function as an argument and when we do this the function we are putting is called callback function.
+
+=>
+	const ul = document.querySelector('.people');
+ 	const const people = ['sait', 'tosun', 'ayla', 'esra', 'esat'];
+	let html = ``;
+	people.forEach(person => html += `<li style="color: purple">${person}</li>`;
+	console.log(html);
+	ul.innerHtml = html;
+
+	const logPerson = (person, index) => {
+		console.log(`${index} is ${person}`);
+	}	
+	people.forEach(logPerson);
+	
+=> user.name // dot notations
+   user['name'] // square notations
+
+=> this keyword is a context object and it represents the context in which the current code is executed. when we use arrow functions js will not set the value of this keyword to be the object. the value of this does not change from the value. It was at the point in the code that the arrow function was invoked right here.
+
+=> Math object 
+	const area = 7.7
+	console.log(Math.rond(area)) // 8
+	console.log(Math.floor(area)) // 7
+	console.log(Math.ceil(area)) // 8 (yukari tamamliyor)
+	console.log(Math.trunc(area)) // 7 (noktadan sonraki kismi atiyor)
+
+=> what is the differences between primitive and reference types? It is all to do with how they are stored and used in memory. If we create a primitive value and we assign it to a variable that value is stored on smth called the stack. the stack is just a stack of different values in memory and they can be accessed pretty quickly when we need to use one. But the space inside this stack is quite limited. So when we create a reference type like an object literal or an array that is stored not on the stack but on what is known as the heap now the heap has more space available so we can hold bigger and more complex types like objects and arrays but it's a bit slower too. when we store a primitive value in a variable it adds that value to the stack and it blocks the variable name to it as an access to that value so it knows whenever we want to access the variable score for example to go out and grab this value for us. So when we store a reference type in a variable like an object it adds the object to the heap and then adds a pointer to the object on the stack.
+
+	// primitive values
+	let scoreOne = 50; 
+	let scoreTwo = scoreOne;
+
+	console.log(`scoreOne: ${scoreOne}`, `scoreTwo: ${scoreTwo}`);// 50 50 
+	scoreOne = 100; // primitive bunu degistirirsek digerini degistirmiyor.
+	console.log(`scoreOne: ${scoreOne}`, `scoreTwo: ${scoreTwo}`);// 100 50 
+
+	// reference values
+	const userOne = {name: 'ryu', age: 30};
+	const userTwo = userOne; // when we copy it doesn't the actual object it just copies the pointer on the stack and then use it to is locked to that new pointer but they both still point to this same object.
+	console.log(userOne, userTwo); // ikiside ayni
+	
+	userOne.age = 40;
+	console.log(userOne, userTwo); // ikisinde de age 40 oldu
+
+DOCUMENT OBJECT MODEL
+
+=> once the document the e-mail document is loaded in the browser the browser creates an object which models this document and this object is called The Document object. So  whenever we want to do something like remove an element from a browser or response we use a click on a button or add something to the browser. What we do is we do that via the Document object. this document object is created by the browser and it models the HTML page.
+
+=> So programmatically the document over here is modelled by this document object created by the browser and inside our javascript code over here when we start to code we have access to that document object and we can use it to interact with the HTML pages using those different properties and methods.
+
+=> The Document Object Model sees our HTML page as this hierarchical tree of nodes and each one of these elements is considered a node in the DOM. So the idea is that if we want to interact with a web page we'd use the DOM to reach into this tree of nodes and we get a reference to a particular node for example the H1 right here. So say we've got a reference now to the H1 we can use some different methods on that reference to change its content or change its style or remove it or do something else with it.
+
+=> We can't use for each on HTML collection.
+
+=> HTML collection methods: .item(), .namedItem()
+
+=> Node list methods: .item(), .entries(), .forEach(), .keys(), .values()
+
+=> content.innerHTML += '<h2>smth else</h2>; // plus equal is to append or just equal to overwrite it.
+
+=> const title = document.querySelector('h1');
+   title.style.margin = '50px';
+   title.style.margin = ''; // bu onceki style i siliyor
+
+=> node tree is the visual representation of the DOM and it represents our HTML page.
+
+=> const article = document.querySelector('article'); // html collection oluyor bu nedenle forEach calismiyor. o yuzden asagidaki sekilde degistiriyoruz.
+   console.log(article.children);
+   console.log(Array.from(article.children)); // It doesn't alter the original value of this const article.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
