@@ -16,8 +16,11 @@ const items = document.querySelectorAll('li');
 items.forEach(item => {
   // console.log(item);
   item.addEventListener('click', (e) => {
-    console.log(e);
-    // e.target.style.textDecoration = 'line-through';
+    console.log('event in LI');
     e.target.remove();
   });
+});
+
+ul.addEventListener('click', () => {
+  console.log('event in UL');
 });
